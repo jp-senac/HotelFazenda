@@ -1,0 +1,55 @@
+public class AdministradorEF{
+    public void Adicionar(Administrador administrador){
+        try
+        {
+            ElContext context = new ElContext();
+            context.Administrador.Add(administrador);
+            context.SaveChanges();
+        }
+        catch (System.Exception e)
+        {
+            
+            System.Console.WriteLine(e.Message);
+        }
+    }
+
+    public List<Administrador> ListarTodos(){
+        try
+        {
+            ElContext context = new ElContext();
+            List<Administrador> administradores = context.Administrador.ToList();
+            return administradores;
+        }
+        catch (System.Exception e)
+        {
+            System.Console.WriteLine(e.Message);
+            return null;
+        }
+    }
+
+    public void Atualizar(Administrador administrador) {
+        try
+        {
+            ElContext context = new ElContext();
+            context.Administrador.Update(administrador);
+            context.SaveChanges();
+        }
+        catch (System.Exception e)
+        {
+            System.Console.WriteLine(e.Message);
+        }
+    }
+
+    public void Deletar(Administrador administrador) {
+        try
+        {
+            ElContext context = new ElContext();
+            context.Administrador.Remove(administrador);
+            context.SaveChanges();
+        }
+        catch (System.Exception e)
+        {
+            System.Console.WriteLine(e.Message);
+        }
+    }
+}
